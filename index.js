@@ -13,11 +13,13 @@ var path = require('path');
 app.set('views', path.join(__dirname, '/src/views'));
 app.set('view engine', 'ejs');
 
-app.use(express.static('src'));
+app.use(express.static(__dirname + '/src'));
 
 app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname + '/src/index.html'));
 })
+
+
 
 
 
