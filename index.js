@@ -15,6 +15,16 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/src'));
 
+
+var registrationRouter = require('./routes/register');
+var loginRouter = require('./routes/login');
+var adminRouter = require('./routes/admin-login')
+
+app.use('/',registrationRouter);
+app.use('/',loginRouter);
+app.use('/', adminRouter);
+
+
 app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname + '/src/index.html'));
 })
