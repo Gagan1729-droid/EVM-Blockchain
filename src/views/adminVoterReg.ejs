@@ -21,7 +21,7 @@
 <body>
     <!-- additional -->
     <div class="wrapper ">
-        <div class="sidebar" data-color="azure" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+        <div class="sidebar" data-color="green" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
           <!--
             Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
     
@@ -30,35 +30,29 @@
             <div class="sidebar-wrapper">
               <ul class="nav" style="margin-top: 50px;">
                 <li class="nav-item">
-                  <a class="nav-link" href="/userInfo">
-                    <i class="material-icons">content_paste</i>
-                    <p>Information</p>
+                  <a class="nav-link" href="/candidateDetails">
+                    <i class="material-icons">info</i>
+                    <p>Candidate Details</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/addCandidate">
+                    <i class="material-icons">person_add</i>
+                    <p>Add Candidate</p>
                   </a>
                 </li>
                 <li class="nav-item active">
                   <a class="nav-link" href="#">
-                    <i class="material-icons">check_box</i>
-                    <p>Voter Registration</p>
+                    <i class="material-icons">how_to_reg</i>
+                    <p>Register</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/dashboard">
-                    <i class="material-icons">how_to_vote</i>
-                    <p>Voting-Area</p>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="/result">
-                    <i class="material-icons">assessment</i>
-                    <p>Result</p>
-                  </a>
-                </li>
-                <!-- <li class="nav-item">
                   <a class="nav-link" href="/changePhase">
-                    <i class="material-icons">content_paste</i>
+                    <i class="material-icons">published_with_changes</i>
                     <p>Change Phase</p>
                   </a>
-                </li> -->
+                </li>
                 <li class="nav-item ">
                   <a class="nav-link" href="/logout">
                     <i class="material-icons">logout</i>
@@ -83,58 +77,63 @@
               </button>
             </div>
           </nav>
+    
           <div class="content">
-            <div class="container" style="width: 800px">
+            <div class="container-fluid">
               <div class="row">
                 <div class="col-md-12">
                   <div class="card">
-                    <div class="card-header card-header-info">
-                      <h4 class="card-title">REGISTRATION</h4>
+                    <div class="card-header card-header-success">
+                      <h4 class="card-title">Voter Registration</h4>
                     </div>
                     <div class="card-body">
-                      <!-- form  -->
-                      <form action='/registerdata' method="post">
-                        <!-- 2 column grid layout with text inputs for the first and last names -->
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-outline">
-                                <br/>
-                              <input type="text" id="name" class="form-control" name='aadharno' required/>
-                              <label class="form-label" for="form3Example1">Aadhar Number</label>
-                            </div>
-                          </div>
-                          </div>
-                          <div class="row">
-                          <div class="col">
-                            <div class="form-outline">
-                                <br/>
-                              <input type="text" id="party" class="form-control" name='account_address' required/>
-                              <label class="form-label" for="form3Example2">Account Address</label>
+                        <div>
+                            <table class="table">
+                                <tr>
+                                    <th>S.N</th>
+                                    <th>Account address</th>
+                                    <th>Is registered</th>
+                
+                
+                                </tr>
+                
+                                <% if(userData.length!=0){ var i=0; userData.forEach(function(data){ console.log(data) %>
+                                    <tr>
+                                        <td>
+                                            <%=i; %>
+                                        </td>
+                                        <td>
+                                            <%=data.Account_address%>
+                                        </td>
+                                        <td>
+                                            <%=data.Is_registered%>
+                                        </td>
+                
+                
+                                    </tr>
+                                    <% i++; }) %>
+                                        <% } else{ %>
+                                            <tr>
+                                                <td colspan="7">No Data Found</td>
+                                            </tr>
+                                            <% } %>
+                            </table>
+                        </div>
+                        <form onsubmit="App.registerVoter(); return false;">
+                            <div class="form-group">
                               <br>
+                              <input type="text" class="form-control" id="accadd" placeholder="Please Enter Voter Account Address here.." required>
+                              <!-- <label>Voter Account</label> -->
                             </div>
-                          </div>
-                        </div>
-                        <br>
-                        <button type="submit"  class="btn btn-info btn-block mb-4">Register</button>
-                        </div>
-                      </form>
-                    </div>
-                    <div  id="loader">
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      </button>
-                      <div>
-                        <%=(typeof alertMsg!='undefined')? alertMsg:''%>
-                        </div>
-                      <!-- <span>
-                        <b> Candidate </b> has been registered Successfully....!
-                      </span> -->
+                            <br>
+                            <button type="submit" class="btn btn-success">Register</button>
+                        </form>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-    
-          
+        </div>
           <!-- End Navbar -->
       </div>
       </div>
@@ -150,9 +149,9 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- <script src="js/web3.min.js"></script> -->
-<!-- <script src="js/truffle-contract.js"></script> -->
-<!-- <script src="js/app.js"></script> -->
+<script src="js/web3.min.js"></script>
+<script src="js/truffle-contract.js"></script>
+<script src="js/app.js"></script>
 <script src="../assets/js/core/popper.min.js"></script>
 <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
@@ -170,7 +169,7 @@
 <script src="../assets/js/plugins/nouislider.min.js"></script>
 <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-<!-- Library for adding dynamically elements -->
+<!-- Library for adding dinamically elements -->
 <script src="../assets/js/plugins/arrive.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="../assets/js/plugins/bootstrap-notify.js"></script>
@@ -358,23 +357,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- previous code -->
