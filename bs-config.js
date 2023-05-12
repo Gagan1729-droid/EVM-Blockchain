@@ -78,5 +78,17 @@ app.get('/vote_area', function (req, res) {
 
 const port = process.env.PORT || 3000;
 
-app.listen(port);
-console.log("Server listening on port " + port);
+// app.listen(port);
+// console.log("Server listening on port " + port);
+module.exports = {
+  "server": {
+    "baseDir": ["./src", "./build/contracts"],
+    "routes": {
+      "/node_modules": "node_modules"
+    },
+    middleware: {
+      1: app,
+  },
+},
+port: port,
+};

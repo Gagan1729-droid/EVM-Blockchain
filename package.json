@@ -4,14 +4,11 @@
   "description": "Blockchain Project on EVM",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon",
+    "dev": "lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gaurang Mittal, Gagan Gupta, Guna Harsha, Adnan Hassan",
   "license": "ISC",
-  "devDependencies": {
-    "lite-server": "^2.6.1"
-  },
   "dependencies": {
     "body-parser": "^1.20.2",
     "bootstrap": "^5.2.3",
