@@ -21,7 +21,6 @@ router.post('/login', function(req, res){
             req.session.loggedinUser= true;
             req.session.emailAddress= emailAddress;
             res.redirect('/userInfo');
-            // res.redirect('/blockchain');
         }else{
             res.render('login-form.ejs',{alertMsg:"Your Email Address or password is wrong"});
         }
