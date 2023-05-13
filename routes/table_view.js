@@ -13,10 +13,6 @@ router.get('/table_view', function(req, res, next) {
         throw err;
     }
     
-    
-    
-    //console.log(typeof(myarray))
-    // console.log(data)
     res.render('adminVoterReg', { title: 'Registered Users List', userData: data});
 
   });
