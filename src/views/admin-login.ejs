@@ -12,30 +12,37 @@
 
 	<%=(typeof alertMsg!='undefined')? alertMsg:''%>
 
-	<form  method="post" action="/admin">
+	<form  method="post" action="/admin-login">
 		<input type="text" placeholder="Email or Username" name="email_address" required/>
 		<i class="far fa-envelope"></i>
 		<input id="pswrd" type="password" placeholder="Password" name="password" required/>
-		<i class="fas fa-lock" onclick="show()"></i>
+		<i class="fas fa-sharp fa-regular fa-eye" onclick="show()"></i>
+		<i class="fas fa-regular fa-eye-slash" onclick="show()"></i>
+		<i class="fas fa-lock" ></i>
 		<input type="submit" value="Login">
 		<a href="#">Forgot Password?</a>
 	</form>	
 	</div>
 
-	<!-- <script>
+	<script>
 		function show(){
 			var pswrd = document.getElementById('pswrd');
-			var icon = document.querySelector('.fas');
+			var iconShow = document.querySelector('.fa-eye');
+			var iconHide = document.querySelector('.fa-eye-slash')
 			if (pswrd.type === "password") {
+				iconHide.style.display = 'inline-block';
+				iconShow.style.display = 'none';
 				pswrd.type = "text";
 				pswrd.style.marginTop = "20px";
-				icon.style.color = "#7f2092";
+				// icon.style.color = "#7f2092";
 			}else{
+				iconHide.style.display = 'none';
+				iconShow.style.display = 'inline-block';
 				pswrd.type = "password";
 				icon.style.color = "grey";
 			}
 		}
 	</script>
-	 -->
+	
 </body>
 </html>

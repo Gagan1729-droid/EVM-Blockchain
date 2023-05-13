@@ -61,7 +61,7 @@ router.post('/registerdata',function(req,res){
           if (age>=18)
           {
             var mailOptions = {
-                from: 'sharayuingale19@gmail.com',
+                from: 'mrobot.1729@gmail.com',
                 to: email,
                 subject : "Please confirm your Email account",
                 text : "Hello, Your otp is "+rand	
@@ -127,23 +127,9 @@ router.post('/otpverify', (req, res) => {
     }
     else 
     {
-       res.render('voter-registration.ejs',{alertMsg:"Session Expired! , You have entered wronge OTP "});
+       res.render('voter-registration.ejs',{alertMsg:"Session Expired! , You have entered wrong OTP "});
     }
 })
 
-
-
-// router.get('/register',function(req,res){
-//     res.sendFile(__dirname+'/views/index.html')
-// });
-
-/*app.get('/signin_signup',function(req,res){
-    res.sendFile(__dirname+'/views/signup.html')
-});
-
-app.get('/signup',function(req,res){
-    console.log(req.body);
-    res.sendFile(__dirname+'/views/signup.html')
-});*/
 
 module.exports = router;

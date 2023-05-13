@@ -21,7 +21,7 @@
 <body>
     <!-- additional -->
     <div class="wrapper ">
-        <div class="sidebar" data-color="azure" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+        <div class="sidebar" data-color="green" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
           <!--
             Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
     
@@ -29,28 +29,28 @@
         -->
             <div class="sidebar-wrapper">
               <ul class="nav" style="margin-top: 50px;">
-				<li class="nav-item">
-					<a class="nav-link" href="/userInfo">
-					  <i class="material-icons">content_paste</i>
-					  <p>Information</p>
-					</a>
-				</li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/form">
-                    <i class="material-icons">check_box</i>
-                    <p>Voter Registeration</p>
+                  <a class="nav-link" href="/candidateDetails">
+                    <i class="material-icons">info</i>
+                    <p>Candidate Details</p>
                   </a>
                 </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="/dashboard">
-                    <i class="material-icons">how_to_vote</i>
-                    <p>Voting-Area</p>
+                <li class="nav-item">
+                  <a class="nav-link" href="/addCandidate">
+                    <i class="material-icons">person_add</i>
+                    <p>Add Candidate</p>
                   </a>
                 </li>
                 <li class="nav-item active">
                   <a class="nav-link" href="#">
-                    <i class="material-icons">assessment</i>
-                    <p>Result</p>
+                    <i class="material-icons">how_to_reg</i>
+                    <p>Register</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/changePhase">
+                    <i class="material-icons">published_with_changes</i>
+                    <p>Change Phase</p>
                   </a>
                 </li>
                 <li class="nav-item ">
@@ -77,46 +77,63 @@
               </button>
             </div>
           </nav>
-		  <div class="content">
+    
+          <div class="content">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-md-12">
                   <div class="card">
-                    <div class="card-header card-header-info">
-                      <h4 class="card-title">Results</h4>
+                    <div class="card-header card-header-success">
+                      <h4 class="card-title">Voter Registration</h4>
                     </div>
                     <div class="card-body">
-                        <div id="not">
-                            <h1>Election is Not Over Yet!!!!!</h1>
-                        </div>
-                        <div id="renderTable">
+                        <div>
                             <table class="table">
-                                <thead>
-                                  <th scope="col">#</th>
-                                  <th scope="col">Name</th>
-                                  <th scope="col">Age</th>
-                                  <th scope="col">Party</th>
-                                  <th scope="col">Qualification</th>
-                                  <th scope="col">Votes</th>
-                                </thead>
-                                <tbody id="Results">
-                      
-                                </tbody>
-                                <hr/>
-                                <p id="accountAddress" class="text-center"></p>
-                              </table>
+                                <tr>
+                                    <th>S.N</th>
+                                    <th>Account address</th>
+                                    <th>Is registered</th>
+                
+                
+                                </tr>
+                
+                                <% if(userData.length!=0){ var i=0; userData.forEach(function(data){ console.log(data) %>
+                                    <tr>
+                                        <td>
+                                            <%=i; %>
+                                        </td>
+                                        <td>
+                                            <%=data.Account_address%>
+                                        </td>
+                                        <td>
+                                            <%=data.Is_registered%>
+                                        </td>
+                
+                
+                                    </tr>
+                                    <% i++; }) %>
+                                        <% } else{ %>
+                                            <tr>
+                                                <td colspan="7">No Data Found</td>
+                                            </tr>
+                                            <% } %>
+                            </table>
                         </div>
-                        
+                        <form onsubmit="App.registerVoter(); return false;">
+                            <div class="form-group">
+                              <br>
+                              <input type="text" class="form-control" id="accadd" placeholder="Please Enter Voter Account Address here.." required>
+                              <!-- <label>Voter Account</label> -->
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-success">Register</button>
+                        </form>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
         </div>
-		
-          
-    
-          
           <!-- End Navbar -->
       </div>
       </div>
@@ -144,7 +161,7 @@
 <script src="../assets/js/plugins/jquery.validate.min.js"></script>
 <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
 <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
-<!-- Plugin for File upload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
 <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
 <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
 <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
@@ -152,7 +169,7 @@
 <script src="../assets/js/plugins/nouislider.min.js"></script>
 <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-<!-- Library for adding dynamically elements -->
+<!-- Library for adding dinamically elements -->
 <script src="../assets/js/plugins/arrive.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="../assets/js/plugins/bootstrap-notify.js"></script>
